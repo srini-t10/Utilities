@@ -1,0 +1,71 @@
+// Ensure that the input csv files are present under "import" folder in Neo4j Databse location.
+
+// 1. Load Node - FunctionalGroup:
+LOAD CSV WITH HEADERS
+FROM "file:///FunctionalGroup.csv"
+AS InputData
+MERGE (node:FunctionalGroup {FunctionalGroup:InputData.FunctionalGroup})
+
+CREATE CONSTRAINT ON (node:FunctionalGroup) ASSERT node.FunctionalGroup IS UNIQUE
+
+
+// 2. Load Node - Scenario:
+LOAD CSV WITH HEADERS
+FROM "file:///Scenario.csv"
+AS InputData
+MERGE (node:Scenario {ScenarioID:InputData.ScenarioID})
+ON CREATE SET
+ node.ScenarioTitle = InputData.ScenarioTitle
+ON MATCH SET
+ node.ScenarioTitle = InputData.ScenarioTitle
+
+CREATE CONSTRAINT ON (node:Scenario) ASSERT node.ScenarioID IS UNIQUE
+
+
+// 3. Load Node - L1:
+LOAD CSV WITH HEADERS
+FROM "file:///L1.csv"
+AS InputData
+MERGE (node:L1 {L1ID:InputData.L1ID})
+ON CREATE SET
+ node.L1Description = InputData.L1Description
+ON MATCH SET
+ node.L1Description = InputData.L1Description
+
+CREATE CONSTRAINT ON (node:L1) ASSERT node.L1ID IS UNIQUE
+
+
+// 4. Load Node - L2:
+LOAD CSV WITH HEADERS
+FROM "file:///L2.csv"
+AS InputData
+MERGE (node:L2 {L2ID:InputData.L2ID})
+ON CREATE SET
+ node.L2Description = InputData.L2Description
+ON MATCH SET
+ node.L2Description = InputData.L2Description
+
+CREATE CONSTRAINT ON (node:L2) ASSERT node.L2ID IS UNIQUE
+
+
+// 5. Load Node - Attribute:
+LOAD CSV WITH HEADERS
+FROM "file:///Attribute.csv"
+AS InputData
+MERGE (node:Attribute {Attribute:InputData.Attribute})
+ON CREATE SET
+ node.IsMeasure = InputData.IsMeasure
+ON MATCH SET
+ node.IsMeasure = InputData.IsMeasure
+
+CREATE CONSTRAINT ON (node:Attribute) ASSERT node.Attribute IS UNIQUE
+
+
+// 6. Load Node - Report:
+LOAD CSV WITH HEADERS
+FROM "file:///Report.csv"
+AS InputData
+MERGE (node:Report {Report:InputData.Report})
+
+CREATE CONSTRAINT ON (node:Report) ASSERT node.Report IS UNIQUE
+

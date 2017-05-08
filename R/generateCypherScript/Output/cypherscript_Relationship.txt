@@ -1,0 +1,51 @@
+// Ensure that the input csv files are present under "import" folder in Neo4j Databse location.
+
+// 1. Load Relationship between FunctionalGroupand Scenario:
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS
+FROM "file:///ScenarioFunctionalGroupMap.csv"
+AS InputData
+MATCH
+ (node1:FunctionalGroup{FunctionalGroup:InputData.FunctionalGroup})
+,(node2:Scenario{ScenarioID:InputData.ScenarioID})
+MERGE (node1)-[:HAS]->(node2)
+
+// 2. Load Relationship between Scenarioand L1:
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS
+FROM "file:///ScenarioL1Map.csv"
+AS InputData
+MATCH
+ (node1:Scenario{ScenarioID:InputData.ScenarioID})
+,(node2:L1{L1ID:InputData.L1ID})
+MERGE (node1)-[:LEADS_TO]->(node2)
+
+// 3. Load Relationship between L1and L2:
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS
+FROM "file:///L1L2Map.csv"
+AS InputData
+MATCH
+ (node1:L1{L1ID:InputData.L1ID})
+,(node2:L2{L2ID:InputData.L2ID})
+MERGE (node1)-[:LEADS_TO]->(node2)
+
+// 4. Load Relationship between L2and Attribute:
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS
+FROM "file:///L2AttributeMap.csv"
+AS InputData
+MATCH
+ (node1:L2{L2ID:InputData.L2ID})
+,(node2:Attribute{Attribute:InputData.Attribute})
+MERGE (node1)-[:HAS]->(node2)
+
+// 5. Load Relationship between Attributeand Report:
+USING PERIODIC COMMIT 5000
+LOAD CSV WITH HEADERS
+FROM "file:///ReportAttributeMap.csv"
+AS InputData
+MATCH
+ (node1:Attribute{Attribute:InputData.Attribute})
+,(node2:Report{Report:InputData.Report})
+MERGE (node1)-[:USED_IN]->(node2)

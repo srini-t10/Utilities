@@ -1,0 +1,120 @@
+/*********************************************************************************************************************************************
+// Neo4j has two basic components. (1) Nodes, and (2) Relationship. 
+// The entities will become Nodes and the relationship between entities will be the relationship between nodes.
+//
+// Use this config file to provide the list of Nodes that needs to be created in following format;
+//
+//  {
+//    "FileName": "Movie.csv", // Input CSV file Name
+//    "Type": "Node", // To indicate create node cypher script needs to be written (The value needs to be either "Node" or "Relationship")
+//    "NodeName":"Movie", // Name of the Node
+//    "UniqueKeyColumn": "Title",  // Unique column for this node in the input CSV file. This will be added a uniqe contraint in cypher script
+//    "Column2": "YearReleased" // Mention remaining column names from input CSV file if they need to be added as a preperty to the node
+//     // If input file has mode fields that needs to added as priperty, then include them subsequently i.e. as Column3, Column4, Column5, etc. 
+//  },
+//
+// Use this config file to provide the list of Relationship that needs to be created in following format; All the property is must.
+//
+//  {
+//    "FileName": "MovieActorMap.csv", // Input CSV file Name
+//    "Type": "Relationship", // To indicate create relation cypher script needs to be written (The value needs to be either "Node" or "Relationship")
+//    "Node1Name":"People", // Name of the Node 1
+//    "Node1Key": "Name",  // Unique column for Node 1. The same column name needs to be present in both CSV file and in Node1
+//    "Node2Name":"Movie", // Name of the Node 2
+//    "Node2Key": "Title",  // Unique column for Node 2. The same column name needs to be present in both CSV file and in Node2
+//    "RelationshipName": "ACTED_IN" // Mention how Node1 is related to Node2. This will be the laben given in Relationsip.
+//  },
+//
+**********************************************************************************************************************************************/
+
+[
+  // Node
+  {
+    "FileName": "FunctionalGroup.csv",
+    "Type": "Node",
+    "NodeName":"FunctionalGroup",
+    "UniqueKeyColumn": "FunctionalGroup"
+  },
+  {
+    "FileName": "Scenario.csv",
+    "Type": "Node",
+    "NodeName":"Scenario",
+    "UniqueKeyColumn": "ScenarioID",
+    "Column2": "ScenarioTitle"
+  },  
+  {
+    "FileName": "L1.csv",
+    "Type": "Node",
+    "NodeName":"L1",
+    "UniqueKeyColumn": "L1ID",
+    "Column2": "L1Description"
+  },
+  {
+    "FileName": "L2.csv",
+    "Type": "Node",
+    "NodeName":"L2",
+    "UniqueKeyColumn": "L2ID",
+    "Column2": "L2Description"
+  },
+  {
+    "FileName": "Attribute.csv",
+    "Type": "Node",
+    "NodeName":"Attribute",
+    "UniqueKeyColumn": "Attribute",
+    "Column2": "IsMeasure"
+  },
+  {
+    "FileName": "Report.csv",
+    "Type": "Node",
+    "NodeName":"Report",
+    "UniqueKeyColumn": "Report"
+  }, 
+
+  // Relationship
+   {
+    "FileName": "ScenarioFunctionalGroupMap.csv",
+    "Type": "Relationship",
+    "Node1Name":"FunctionalGroup",
+    "Node1Key":"FunctionalGroup",
+    "Node2Name": "Scenario",
+    "Node2Key": "ScenarioID",
+    "RelationshipName": "HAS"
+  },
+  {
+    "FileName": "ScenarioL1Map.csv",
+    "Type": "Relationship",
+    "Node1Name":"Scenario",
+    "Node1Key":"ScenarioID",
+    "Node2Name": "L1",
+    "Node2Key": "L1ID",
+    "RelationshipName": "LEADS_TO"
+  },
+  {
+    "FileName": "L1L2Map.csv",
+    "Type": "Relationship",
+    "Node1Name":"L1",
+    "Node1Key":"L1ID",
+    "Node2Name": "L2",
+    "Node2Key": "L2ID",
+    "RelationshipName": "LEADS_TO"
+  },
+  {
+    "FileName": "L2AttributeMap.csv",
+    "Type": "Relationship",
+    "Node1Name":"L2",
+    "Node1Key":"L2ID",
+    "Node2Name": "Attribute",
+    "Node2Key": "Attribute",
+    "RelationshipName": "HAS"
+  },
+  {
+    "FileName": "ReportAttributeMap.csv",
+    "Type": "Relationship",
+    "Node1Name":"Attribute",
+    "Node1Key":"Attribute",
+    "Node2Name": "Report",
+    "Node2Key": "Report",
+    "RelationshipName": "USED_IN"
+  }
+
+]
