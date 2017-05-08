@@ -89,8 +89,20 @@ Add relationship details to config.JSON file in following format;
 
 #### How to run this utility:
 
-Click on the "Run.bat" file to run this utility. 
-This utility needs R Script dll's and libraries which are copied in the utility folder. Hence the client machine do not require to install R separately.
+This utility needs R Script above version 3.3.2. Do the following,
+
+* Ensure that R Script v3.3.2 or above is installed in your machine. If not download and install it from <https://cran.r-project.org/>
+
+* Install the "jsonlite" R package
+
+* Edit the "Run.bat" file
+
+* Update the R Script location to the R bin folder in server/local machine
+
+* Save "Run.bat" file
+
+* click on "Run.bat" file to run this utility
+
 
 
 </br>
