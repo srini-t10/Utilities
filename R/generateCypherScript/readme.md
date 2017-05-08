@@ -1,5 +1,6 @@
 ## R Utility - Generate Cypher Script
 </br>
+
 ### Introduction:
 
 Cypher is a declarative query language for **Neo4j**, a property graph database. Neo4j has two basic components. 
@@ -28,6 +29,7 @@ This utility has following objects in folder and a short description about them.
 | run.bat | Batch | Windows batch script that executes the R script \"script_gencypher.R\" |
 
 </br>
+
 ### Configuration template:
 
 
@@ -70,6 +72,7 @@ Add relationship details to config.JSON file in following format;
 
 
 </br>
+
 ### How to run this utility:
 
 This utility requires R Script above version 3.3.2. 
@@ -88,6 +91,7 @@ Following are the steps to run this utility,
 * click on “Run.bat” file to run this utility
 
 </br>
+
 ### Note:
 
 This utility will serve as an example for following tasks,
