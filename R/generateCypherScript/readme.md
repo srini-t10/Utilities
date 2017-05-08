@@ -1,7 +1,5 @@
 ## R Utility - Generate Cypher Script
-
 </br>
-
 ### Introduction:
 
 Cypher is a declarative query language for **Neo4j**, a property graph database. Neo4j has two basic components. 
@@ -12,7 +10,6 @@ Cypher is a declarative query language for **Neo4j**, a property graph database.
 The *nodes* are the entities and the *relationship* defines how the two nodes are connected. For more details on Neo4j and graph database see [Neo4j - Graph Database](https://neo4j.com/developer/graph-database/).
 
 *Generate Cypher Script* is an utility created with R Script. It reads the list of *nodes*, *relationships* and *input CSV file name* from a JSON configuration file and outputs the Cypher script. The generated cypher script can be used to create the nodes and relationship on Neo4j database.
-
 </br>
 
 ### Objects:
@@ -30,9 +27,7 @@ This utility has following objects in folder and a short description about them.
 | script_gencypher.R | R | R script to call generate cypher script  R function |
 | run.bat | Batch | Windows batch script that executes the R script \"script_gencypher.R\" |
 
-
 </br>
-
 ### Configuration template:
 
 
@@ -75,15 +70,24 @@ Add relationship details to config.JSON file in following format;
 
 
 </br>
-
 ### How to run this utility:
 
-Click on the "Run.bat" file to run this utility. 
-This utility needs R Script dll's and libraries which are copied in the utility folder. Hence the client machine do not require to install R separately.
+This utility requires R Script above version 3.3.2. 
+Following are the steps to run this utility,
 
+* Ensure that R Script v3.3.2 or above is installed in your machine. If not download and install it from <https://cran.r-project.org/> 
+
+* Install the “jsonlite” R package
+
+* Edit the “Run.bat” file
+
+* Update the R Script location to the R bin folder in server/local machine
+
+* Save “Run.bat” file
+
+* click on “Run.bat” file to run this utility
 
 </br>
-
 ### Note:
 
 This utility will serve as an example for following tasks,
