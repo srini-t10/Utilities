@@ -1,4 +1,4 @@
-# Index
+## Index
 
 #### 1. [R/generateCypherScript](R/generateCypherScript/)
 
