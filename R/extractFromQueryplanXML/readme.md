@@ -5,7 +5,8 @@
 MS SQL converts any SQL query into Queryplan before passing it to SQL engine. We can save these Queryplans as XML. 
 The Queryplan XML has a tag called "ColumnReference" which contains information about all the columns referred in the query (be it in select or join or where clause) similar to below.
 
-> <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="BookedHours"></ColumnReference>
+> &lt;ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="BookedHours"&gt; &lt;/ColumnReference&gt;
+
 *There will be many such Column Reference tags in the XML*
 
 This utility will read all the Queryplan XMLs placed in the Input folder, extract the schema information and bind it to an output csv file. 
