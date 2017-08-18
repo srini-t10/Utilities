@@ -1,0 +1,144 @@
+<ShowPlanXML 
+  xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.6" Build="14.0.800.90">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementText="&#xa;SELECT R.ResourceAlias, Re.RequestType, Re.Requestor, B.BookedHours&#xa;FROM Booking B&#xa;JOIN Resource R ON R.ResourceId = B.ResourceId&#xa;JOIN Request Re ON Re.RequestId = B.RequestId" StatementId="1" StatementCompId="1" StatementType="SELECT" RetrievedFromCache="false" StatementSubTreeCost="0.0106724" StatementEstRows="3" SecurityPolicyApplied="false" StatementOptmLevel="FULL" QueryHash="0x3B57828A5B52D679" QueryPlanHash="0xF0F4EE30A556CF9C" StatementOptmEarlyAbortReason="GoodEnoughPlanFound" CardinalityEstimationModelVersion="140">
+          <StatementSetOptions QUOTED_IDENTIFIER="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" NUMERIC_ROUNDABORT="false"></StatementSetOptions>
+          <QueryPlan CachedPlanSize="24" CompileTime="2" CompileCPU="2" CompileMemory="280">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0"></MemoryGrantInfo>
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="80614" EstimatedPagesCached="40307" EstimatedAvailableDegreeOfParallelism="4" MaxCompileMemory="4734120"></OptimizerHardwareDependentProperties>
+            <OptimizerStatsUsage>
+              <StatisticsInfo LastUpdate="2017-08-04T22:26:54.40" ModificationCount="0" SamplingPercent="100" Statistics="[_WA_Sys_00000003_49C3F6B7]" Table="[Booking]" Schema="[dbo]" Database="[TestDB]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-04T22:26:54.40" ModificationCount="0" SamplingPercent="100" Statistics="[PK__Request__33A8517AA45CC00D]" Table="[Request]" Schema="[dbo]" Database="[TestDB]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-04T22:26:54.40" ModificationCount="0" SamplingPercent="100" Statistics="[PK__Resource__4ED1816F20CBD5F6]" Table="[Resource]" Schema="[dbo]" Database="[TestDB]"></StatisticsInfo>
+              <StatisticsInfo LastUpdate="2017-08-04T22:26:54.40" ModificationCount="0" SamplingPercent="100" Statistics="[_WA_Sys_00000002_49C3F6B7]" Table="[Booking]" Schema="[dbo]" Database="[TestDB]"></StatisticsInfo>
+            </OptimizerStatsUsage>
+            <TraceFlags IsCompileTime="1">
+              <TraceFlag Value="835" Scope="Global"></TraceFlag>
+              <TraceFlag Value="3105" Scope="Global"></TraceFlag>
+              <TraceFlag Value="5504" Scope="Global"></TraceFlag>
+              <TraceFlag Value="5521" Scope="Global"></TraceFlag>
+              <TraceFlag Value="6529" Scope="Global"></TraceFlag>
+              <TraceFlag Value="8020" Scope="Global"></TraceFlag>
+              <TraceFlag Value="8415" Scope="Global"></TraceFlag>
+            </TraceFlags>
+            <RelOp NodeId="0" PhysicalOp="Nested Loops" LogicalOp="Inner Join" EstimateRows="3" EstimateIO="0" EstimateCPU="1.254e-005" AvgRowSize="170" EstimatedTotalSubtreeCost="0.0106724" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+              <OutputList>
+                <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="BookedHours"></ColumnReference>
+                <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Resource]" Alias="[R]" Column="ResourceAlias"></ColumnReference>
+                <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="Requestor"></ColumnReference>
+                <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="RequestType"></ColumnReference>
+              </OutputList>
+              <NestedLoops Optimized="0">
+                <OuterReferences>
+                  <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="ResourceId"></ColumnReference>
+                </OuterReferences>
+                <RelOp NodeId="1" PhysicalOp="Nested Loops" LogicalOp="Inner Join" EstimateRows="3" EstimateIO="0" EstimateCPU="1.672e-005" AvgRowSize="122" EstimatedTotalSubtreeCost="0.00706052" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                  <OutputList>
+                    <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="ResourceId"></ColumnReference>
+                    <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="BookedHours"></ColumnReference>
+                    <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="Requestor"></ColumnReference>
+                    <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="RequestType"></ColumnReference>
+                  </OutputList>
+                  <NestedLoops Optimized="0">
+                    <OuterReferences>
+                      <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="RequestId"></ColumnReference>
+                    </OuterReferences>
+                    <RelOp NodeId="2" PhysicalOp="Clustered Index Scan" LogicalOp="Clustered Index Scan" EstimateRows="4" EstimatedRowsRead="4" EstimateIO="0.003125" EstimateCPU="0.0001614" AvgRowSize="20" EstimatedTotalSubtreeCost="0.0032864" TableCardinality="4" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+                      <OutputList>
+                        <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="ResourceId"></ColumnReference>
+                        <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="RequestId"></ColumnReference>
+                        <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="BookedHours"></ColumnReference>
+                      </OutputList>
+                      <IndexScan Ordered="0" ForcedIndex="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="ResourceId"></ColumnReference>
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="RequestId"></ColumnReference>
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="BookedHours"></ColumnReference>
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Index="[PK__Booking__73951AEDFF435F6B]" Alias="[B]" IndexKind="Clustered" Storage="RowStore"></Object>
+                      </IndexScan>
+                    </RelOp>
+                    <RelOp NodeId="3" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="113" EstimatedTotalSubtreeCost="0.0037574" TableCardinality="2" Parallel="0" EstimateRebinds="2.5" EstimateRewinds="0.5" EstimatedExecutionMode="Row">
+                      <OutputList>
+                        <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="Requestor"></ColumnReference>
+                        <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="RequestType"></ColumnReference>
+                      </OutputList>
+                      <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="Requestor"></ColumnReference>
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="RequestType"></ColumnReference>
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Database="[TestDB]" Schema="[dbo]" Table="[Request]" Index="[PK__Request__33A8517AA45CC00D]" Alias="[Re]" IndexKind="Clustered" Storage="RowStore"></Object>
+                        <SeekPredicates>
+                          <SeekPredicateNew>
+                            <SeekKeys>
+                              <Prefix ScanType="EQ">
+                                <RangeColumns>
+                                  <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Request]" Alias="[Re]" Column="RequestId"></ColumnReference>
+                                </RangeColumns>
+                                <RangeExpressions>
+                                  <ScalarOperator ScalarString="[TestDB].[dbo].[Booking].[RequestId] as [B].[RequestId]">
+                                    <Identifier>
+                                      <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="RequestId"></ColumnReference>
+                                    </Identifier>
+                                  </ScalarOperator>
+                                </RangeExpressions>
+                              </Prefix>
+                            </SeekKeys>
+                          </SeekPredicateNew>
+                        </SeekPredicates>
+                      </IndexScan>
+                    </RelOp>
+                  </NestedLoops>
+                </RelOp>
+                <RelOp NodeId="4" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="61" EstimatedTotalSubtreeCost="0.0035993" TableCardinality="3" Parallel="0" EstimateRebinds="1.0625" EstimateRewinds="0.9375" EstimatedExecutionMode="Row">
+                  <OutputList>
+                    <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Resource]" Alias="[R]" Column="ResourceAlias"></ColumnReference>
+                  </OutputList>
+                  <IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Resource]" Alias="[R]" Column="ResourceAlias"></ColumnReference>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <Object Database="[TestDB]" Schema="[dbo]" Table="[Resource]" Index="[PK__Resource__4ED1816F20CBD5F6]" Alias="[R]" IndexKind="Clustered" Storage="RowStore"></Object>
+                    <SeekPredicates>
+                      <SeekPredicateNew>
+                        <SeekKeys>
+                          <Prefix ScanType="EQ">
+                            <RangeColumns>
+                              <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Resource]" Alias="[R]" Column="ResourceId"></ColumnReference>
+                            </RangeColumns>
+                            <RangeExpressions>
+                              <ScalarOperator ScalarString="[TestDB].[dbo].[Booking].[ResourceId] as [B].[ResourceId]">
+                                <Identifier>
+                                  <ColumnReference Database="[TestDB]" Schema="[dbo]" Table="[Booking]" Alias="[B]" Column="ResourceId"></ColumnReference>
+                                </Identifier>
+                              </ScalarOperator>
+                            </RangeExpressions>
+                          </Prefix>
+                        </SeekKeys>
+                      </SeekPredicateNew>
+                    </SeekPredicates>
+                  </IndexScan>
+                </RelOp>
+              </NestedLoops>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>
