@@ -11,7 +11,7 @@ This utility applies the below method to generate Queryplan XMLs and save it in 
 
 * createSQLFiles.bat will generate SQL File for each SQL query given as input. The SQL file content will be prefixed and suffied with "SET SHOWPLAN_XML" ON/OFF statements, to get the Queryplan.
 
-* createXMLFiles.bat will call the SQLCMD commands to fetch Queryplan XML for SQLFiles and store the resulting XMLs in QueryplanXML folder.
+* createXMLFiles.bat will call the SQLCMD commands on the Server/Database given as input to fetch Queryplan XML for SQLFiles and store the resulting XMLs in QueryplanXML folder.
 
 
 ### Objects:
@@ -49,7 +49,7 @@ Following are the steps to run this utility,
 
 5. Run createSQLFiles.bat to generate SQLFiles
 
-6. Once above step is done, Run createXMLFiles.bat to generate QueryplanXML
+6. Once above step is done, Run createXMLFiles.bat to extract & store QueryplanXML. createXMLFiles.bat will hit the Server/Database given as input in step.2.
 
 
 ### Note:
