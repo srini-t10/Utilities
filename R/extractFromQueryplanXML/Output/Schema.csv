@@ -1,11 +1,11 @@
 "TableName","SourceDatabase","SourceSchema","SourceTable","SourceColumn"
 "vwResourceBookingDetails","[TestDB]","[dbo]","[Booking]","BookedHours"
-"vwResourceBookingDetails","[TestDB]","[dbo]","[Resource]","ResourceAlias"
+"vwResourceBookingDetails","[TestDB]","[dbo]","[Booking]","RequestId"
+"vwResourceBookingDetails","[TestDB]","[dbo]","[Booking]","ResourceId"
+"vwResourceBookingDetails","[TestDB]","[dbo]","[Request]","RequestId"
 "vwResourceBookingDetails","[TestDB]","[dbo]","[Request]","Requestor"
 "vwResourceBookingDetails","[TestDB]","[dbo]","[Request]","RequestType"
-"vwResourceBookingDetails","[TestDB]","[dbo]","[Booking]","ResourceId"
-"vwResourceBookingDetails","[TestDB]","[dbo]","[Booking]","RequestId"
-"vwResourceBookingDetails","[TestDB]","[dbo]","[Request]","RequestId"
+"vwResourceBookingDetails","[TestDB]","[dbo]","[Resource]","ResourceAlias"
 "vwResourceBookingDetails","[TestDB]","[dbo]","[Resource]","ResourceId"
 "vwResourceBookingDetails_TestError","ERROR","ERROR","ERROR","Error in doc_parse_file(con, encoding = encoding, as_html = as_html, options = options) : 
   Start tag expected, '<' not found [4]

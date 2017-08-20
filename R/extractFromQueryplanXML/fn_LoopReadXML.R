@@ -94,6 +94,8 @@ fn_LoopReadXML <- function()
       
   }
   
+  output <- output[with(output,order(TableName,SourceDatabase,SourceSchema,SourceTable,SourceColumn)),]
+  
   write.csv(output,paste(outlocation,"Schema.csv",sep = ""), row.names = F)
   
   message("")
