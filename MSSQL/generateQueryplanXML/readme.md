@@ -2,7 +2,7 @@
 
 ### Introduction:
 
-MS SQL converts any SQL query into Queryplan before passing it to SQL engine. We can save these Queryplans as XML and we can extract the Tables/Columns used in the query from this XML. 
+MS SQL converts any SQL query into Queryplan before passing it to SQL engine. We can save these Queryplans as XML and extract the Tables/Columns used in the query. 
 This utility applies the below method to generate Queryplan XMLs and save it in a folder. 
 
 * Pass the list of SQL queries with ServerName, DatabaseName and Target Table/View/Query Name as input, to the script_generateBatchFileCommands.sql present in this folder.
