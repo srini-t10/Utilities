@@ -114,4 +114,4 @@ fn_LoopReadXML <- function()
 
 # > source("fn_extractSchema.R")
 # > source("fn_LoopReadXML.R")
-# > fn_LoopReadXML("./poc","./output")
+# > fn_LoopReadXML()
