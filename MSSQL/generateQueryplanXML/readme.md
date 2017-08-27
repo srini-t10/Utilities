@@ -2,7 +2,7 @@
 
 ### Introduction:
 
-MS SQL converts any SQL query into Queryplan before passing it to SQL engine. We can save these Queryplans as XML and we can extract the Tables/Columns used in the query from this XML. 
+MS SQL converts any SQL query into Queryplan before passing it to SQL engine. We can save these Queryplans as XML and extract the Tables/Columns used in the query. 
 This utility applies the below method to generate Queryplan XMLs and save it in a folder. 
 
 * Pass the list of SQL queries with ServerName, DatabaseName and Target Table/View/Query Name as input, to the script_generateBatchFileCommands.sql present in this folder.
@@ -11,7 +11,7 @@ This utility applies the below method to generate Queryplan XMLs and save it in 
 
 * createSQLFiles.bat will generate SQL File for each SQL query given as input. The SQL file content will be prefixed and suffied with "SET SHOWPLAN_XML" ON/OFF statements, to get the Queryplan.
 
-* createXMLFiles.bat will call the SQLCMD commands to fetch Queryplan XML for SQLFiles and store the resulting XMLs in QueryplanXML folder.
+* createXMLFiles.bat will call the SQLCMD commands on the Server/Database given as input to fetch Queryplan XML for SQLFiles and store the resulting XMLs in QueryplanXML folder.
 
 
 ### Objects:
@@ -33,11 +33,11 @@ This utility has following objects in folder and a short description about them.
 
 Following are the steps to run this utility,
 
-* Download and place all the objects from this utility in a single folder.
+1. Download and place all the objects from this utility in a single folder.
 
-* Edit script_generateBatchFileCommands.sql file and provide the list of SQL queries with ServerName, DatabaseName and Target Table/View/Query Name as input.
+2. Edit script_generateBatchFileCommands.sql file and provide the list of SQL queries with ServerName, DatabaseName and Target Table/View/Query Name as input.
 
-* Run the script_generateBatchFileCommands.sql by connecting to a SQL server. It will return a table as output with following columns (data given is sample).
+3. Run the script_generateBatchFileCommands.sql by connecting to a SQL server. It will return a table as output with following columns (data given is sample).
 
 	| TableName | SQLQuery | SQLCmd_BuildSQLFile | SQMCmd_RunSQL |
 	| --- | --- | --- | --- |
@@ -45,11 +45,11 @@ Following are the steps to run this utility,
 	| report.vwAttributeMap | SELECT * FROM report.vwAttributeMap | (echo SET NOCOUNT ON;     && echo GO    && echo:    && echo SET SHOWPLAN_XML ON;     && echo GO    && echo:    && echo SELECT * FROM report.vwAttributeMap;     && echo GO     && echo:    && echo SET SHOWPLAN_XML OFF;     && echo GO    && echo:)    > SQLFiles\report.vwAttributeMap.sql | sqlcmd -S ESVMUnityDev1 -d dbRKS -i SQLFiles\report.vwAttributeMap.sql -y0 -o QueryplanXML\report.vwAttributeMap.xml |
 	| report.vwReport | SELECT * FROM report.vwReport | (echo SET NOCOUNT ON;     && echo GO    && echo:    && echo SET SHOWPLAN_XML ON;     && echo GO    && echo:    && echo SELECT * FROM report.vwReport;     && echo GO     && echo:    && echo SET SHOWPLAN_XML OFF;     && echo GO    && echo:)    > SQLFiles\report.vwReport.sql | sqlcmd -S ESVMUnityDev1 -d dbRKS -i SQLFiles\report.vwReport.sql -y0 -o QueryplanXML\report.vwReport.xml |
 
-* Copy the values from SQLCmd_BuildSQLFile column (from above table) to createSQLFiles.bat, and Copy the values from SQMCmd_RunSQL column (from above table) to createXMLFiles.bat
+4. Copy the values from SQLCmd_BuildSQLFile column (from above table) to createSQLFiles.bat, and Copy the values from SQMCmd_RunSQL column (from above table) to createXMLFiles.bat
 
-* Run createSQLFiles.bat to generate SQLFiles
+5. Run createSQLFiles.bat to generate SQLFiles
 
-* Once above step is done, Run createXMLFiles.bat to generate QueryplanXML
+6. Once above step is done, Run createXMLFiles.bat to extract & store QueryplanXML. createXMLFiles.bat will hit the Server/Database given as input in step.2.
 
 
 ### Note:
