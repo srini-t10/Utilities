@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+    <INPUTFILE>
+        <FILENAME>SampleData1.xlsx</FILENAME>
+        <ACTION>spread</ACTION>
+        <COLUMNTOSPLIT>Actor</COLUMNTOSPLIT>
+        <DELIMITER>,</DELIMITER>
+    </INPUTFILE>
+</CONFIG>
